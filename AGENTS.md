@@ -1,0 +1,1 @@
+- In this project use the command `ghp` instead of `gh` to interact with github
