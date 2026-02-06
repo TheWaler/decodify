@@ -1,0 +1,292 @@
+.eclipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(62vw, 430px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  animation: eclipse-float 11s ease-in-out infinite;
+}
+
+.eclipse::before,
+.eclipse::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.eclipse::before {
+  inset: -46%;
+  background:
+    radial-gradient(circle, rgba(255, 220, 140, 0.4) 0%, rgba(255, 120, 72, 0.3) 34%, rgba(255, 54, 84, 0.18) 56%, transparent 74%);
+  mix-blend-mode: screen;
+  filter: blur(22px) saturate(185%);
+  opacity: 0.78;
+  animation: halo-breath 5.8s ease-in-out infinite;
+}
+
+.eclipse::after {
+  inset: -18%;
+  background: radial-gradient(circle, transparent 56%, rgba(255, 196, 124, 0.48) 61%, rgba(255, 108, 78, 0.24) 67%, transparent 74%);
+  mix-blend-mode: screen;
+  filter: blur(3px);
+  opacity: 0.85;
+  animation: ring-throb 4.8s ease-in-out infinite;
+}
+
+.sun {
+  position: absolute;
+  inset: -34%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, var(--sun-core) 0%, #ffe6af 10%, var(--sun-gold) 22%, var(--sun-orange) 40%, var(--sun-red) 58%, rgba(255, 46, 78, 0.2) 72%, transparent 82%);
+  mix-blend-mode: screen;
+  filter: blur(10px) saturate(155%);
+  opacity: 0.96;
+  animation: solar-pulse 4.4s ease-in-out infinite;
+}
+
+.sun::before {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 245, 0.68) 0%, rgba(255, 220, 140, 0.42) 30%, transparent 65%);
+  filter: blur(7px);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+.corona {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+}
+
+.corona-outer {
+  inset: -24%;
+  background: conic-gradient(
+    from 24deg,
+    rgba(255, 219, 146, 0.15) 0deg 24deg,
+    rgba(255, 219, 146, 0.75) 24deg 48deg,
+    rgba(255, 92, 86, 0.68) 48deg 78deg,
+    rgba(255, 196, 112, 0.2) 78deg 102deg,
+    rgba(255, 62, 98, 0.82) 102deg 126deg,
+    rgba(255, 180, 98, 0.22) 126deg 172deg,
+    rgba(168, 214, 255, 0.38) 172deg 188deg,
+    rgba(255, 70, 98, 0.72) 188deg 220deg,
+    rgba(255, 216, 162, 0.24) 220deg 256deg,
+    rgba(255, 106, 80, 0.78) 256deg 282deg,
+    rgba(255, 223, 180, 0.2) 282deg 360deg
+  );
+  mask-image: radial-gradient(circle, transparent 50%, #000 56%, #000 74%, transparent 80%);
+  filter: blur(8px) saturate(160%);
+  opacity: 0.94;
+  animation: corona-spin 14s linear infinite;
+}
+
+.corona-inner {
+  inset: -12%;
+  background: conic-gradient(
+    from 240deg,
+    rgba(255, 214, 142, 0.2) 0deg 38deg,
+    rgba(255, 214, 142, 0.84) 38deg 72deg,
+    rgba(255, 98, 76, 0.75) 72deg 110deg,
+    rgba(255, 54, 84, 0.54) 110deg 168deg,
+    rgba(255, 204, 130, 0.92) 168deg 205deg,
+    rgba(255, 70, 112, 0.5) 205deg 270deg,
+    rgba(150, 216, 255, 0.4) 270deg 294deg,
+    rgba(255, 210, 136, 0.86) 294deg 340deg,
+    rgba(255, 136, 86, 0.52) 340deg 360deg
+  );
+  mask-image: radial-gradient(circle, transparent 56%, #000 60%, #000 68%, transparent 74%);
+  filter: blur(3px) saturate(172%);
+  opacity: 0.95;
+  animation: corona-spin-reverse 9.5s linear infinite;
+}
+
+.prominences {
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 15deg,
+      transparent 0deg 28deg,
+      rgba(255, 226, 162, 0.8) 28deg 34deg,
+      rgba(255, 92, 88, 0.72) 34deg 41deg,
+      transparent 41deg 74deg,
+      rgba(255, 196, 130, 0.84) 74deg 80deg,
+      rgba(255, 74, 96, 0.7) 80deg 88deg,
+      transparent 88deg 132deg,
+      rgba(255, 216, 148, 0.78) 132deg 140deg,
+      rgba(255, 70, 114, 0.7) 140deg 148deg,
+      transparent 148deg 216deg,
+      rgba(255, 206, 138, 0.8) 216deg 222deg,
+      rgba(255, 76, 96, 0.62) 222deg 228deg,
+      transparent 228deg 360deg
+    );
+  mask-image: radial-gradient(circle, transparent 50%, #000 58%, #000 78%, transparent 84%);
+  mix-blend-mode: screen;
+  filter: blur(1.5px) saturate(190%);
+  opacity: 0.88;
+  animation: prominence-spin 18s linear infinite, prominence-flare 5.6s ease-in-out infinite;
+}
+
+.caustic {
+  position: absolute;
+  inset: -24%;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 48% 18%, rgba(255, 236, 176, 0.44), transparent 54%),
+    radial-gradient(ellipse at 20% 56%, rgba(255, 88, 110, 0.3), transparent 60%),
+    radial-gradient(ellipse at 80% 58%, rgba(132, 208, 255, 0.24), transparent 58%);
+  mix-blend-mode: screen;
+  filter: blur(12px) saturate(150%);
+  opacity: 0.66;
+  animation: caustic-shift 9s ease-in-out infinite;
+}
+
+.halo {
+  position: absolute;
+  inset: -4%;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 57%, rgba(255, 214, 140, 0.72) 63%, rgba(255, 82, 94, 0.26) 70%, transparent 75%);
+  filter: blur(2.2px);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  animation: halo-breath 6s ease-in-out infinite;
+}
+
+.moon {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 24%, #202642 0%, #121329 48%, #06070f 100%);
+  box-shadow:
+    inset -30px -40px 82px rgba(0, 0, 0, 0.92),
+    inset 12px 8px 22px rgba(90, 116, 160, 0.24),
+    0 0 56px rgba(255, 96, 92, 0.17);
+}
+
+.moon::before {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 66% 38%, rgba(106, 126, 170, 0.14), transparent 48%),
+    radial-gradient(circle at 38% 62%, rgba(22, 28, 44, 0.26), transparent 54%);
+  filter: blur(4px);
+}
+
+.rim {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from 12deg,
+      rgba(255, 234, 184, 0.9) 0deg 34deg,
+      rgba(255, 132, 88, 0.26) 34deg 126deg,
+      transparent 126deg 216deg,
+      rgba(255, 88, 114, 0.42) 216deg 284deg,
+      rgba(175, 224, 255, 0.76) 284deg 332deg,
+      rgba(255, 232, 182, 0.86) 332deg 360deg
+    );
+  mask-image: radial-gradient(circle, transparent 58%, #000 62%, #000 68%, transparent 73%);
+  mix-blend-mode: screen;
+  filter: blur(4px) saturate(162%);
+  opacity: 0.9;
+  animation: rim-shift 6.6s ease-in-out infinite;
+}
+
+.flare {
+  position: absolute;
+  inset: -60% -24%;
+  background:
+    linear-gradient(104deg, transparent 30%, rgba(255, 216, 154, 0.9) 54%, rgba(255, 86, 98, 0.56) 61%, transparent 86%),
+    linear-gradient(80deg, transparent 36%, rgba(156, 222, 255, 0.42) 53%, transparent 74%);
+  transform: rotate(-10deg) translate(9%, -11%);
+  mask-image: radial-gradient(circle at 50% 50%, transparent 22%, #000 44%, #000 88%, transparent 98%);
+  mix-blend-mode: screen;
+  filter: blur(10px) saturate(165%);
+  opacity: 0.82;
+  animation: flare-sweep 5.2s ease-in-out infinite;
+}
+
+.arcs {
+  position: absolute;
+  inset: 6%;
+  background: repeating-conic-gradient(
+    from 22deg,
+    rgba(255, 192, 126, 0.48) 0deg 6deg,
+    rgba(255, 96, 98, 0.34) 6deg 10deg,
+    transparent 10deg 18deg
+  );
+  mask-image: radial-gradient(circle, transparent 52%, #000 56%, #000 78%, transparent 82%);
+  mix-blend-mode: screen;
+  opacity: 0.58;
+  animation: arc-spin 26s linear infinite;
+}
+
+.pulse-ring {
+  position: absolute;
+  inset: 23%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 214, 148, 0.84);
+  box-shadow:
+    0 0 22px rgba(255, 220, 160, 0.72),
+    0 0 80px rgba(255, 102, 98, 0.5);
+  animation: ring-expand 4.8s ease-out infinite;
+}
+
+.shards {
+  position: absolute;
+  inset: -10%;
+  background: conic-gradient(
+    from 16deg,
+    transparent 0deg 12deg,
+    rgba(255, 219, 144, 0.55) 12deg 16deg,
+    transparent 16deg 42deg,
+    rgba(255, 92, 94, 0.5) 42deg 46deg,
+    transparent 46deg 76deg,
+    rgba(171, 226, 255, 0.35) 76deg 82deg,
+    transparent 82deg 126deg,
+    rgba(255, 176, 114, 0.42) 126deg 132deg,
+    transparent 132deg 198deg,
+    rgba(255, 82, 98, 0.45) 198deg 204deg,
+    transparent 204deg 360deg
+  );
+  mask-image: radial-gradient(circle, transparent 54%, #000 63%, #000 90%, transparent 96%);
+  filter: blur(2px) saturate(145%);
+  mix-blend-mode: screen;
+  opacity: 0.56;
+  animation: shard-rotate 46s linear infinite reverse;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, transparent 44%, rgba(0, 0, 0, 0.66) 82%, rgba(0, 0, 0, 0.9) 100%);
+  pointer-events: none;
+}
+
+.grain {
+  position: absolute;
+  inset: -14%;
+  background-image:
+    radial-gradient(1px 1px at 20% 20%, rgba(255, 255, 255, 0.05), transparent 60%),
+    radial-gradient(1px 1px at 82% 36%, rgba(255, 255, 255, 0.05), transparent 60%),
+    radial-gradient(1px 1px at 34% 70%, rgba(255, 255, 255, 0.04), transparent 60%),
+    radial-gradient(1px 1px at 58% 86%, rgba(255, 255, 255, 0.04), transparent 60%);
+  background-size: 110px 110px;
+  mix-blend-mode: soft-light;
+  opacity: 0.28;
+  animation: grain-shift 1.4s steps(2) infinite;
+}
+
